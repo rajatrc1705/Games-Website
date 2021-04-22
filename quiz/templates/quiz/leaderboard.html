@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+
+{% block scripts %}
+
+  <script src="{% static 'quiz/leaderboard.js' %}" defer>  </script>
+
+{% endblock scripts %}
+
+{% block title%}
+Frage | Leaderboard
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+    <a class="navbar-brand" href="">
+      <img src="../static/frage_logo.png" class="d-inline-block align-top rounded" width="30" height="30" alt="" href="/"> Frage
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <i class="bi bi-file-bar-graph"></i>
+          <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+    <a class="navbar-brand" href="../logout">Logout</a>
+  </nav>
+  <br>
+  <h1>Leader Board</h1><hr>
+  <div id='leader-board'>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Rank</th>
+                <th>User</th>
+                <th>Score</th>
+            </tr>
+        </thead>
+        <tbody id="table-body">
+
+        </tbody>
+    </table>    
+  </div>
+{% endblock %}

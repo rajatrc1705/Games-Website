@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block scripts %}
+
+  <script src="{% static 'quiz/result.js' %}" defer></script>
+
+{% endblock scripts %}
+
+{% block title %}
+{{obj.quiz}}
+{% endblock title %}
+
+{% block content %}
+<h1>{{obj.quiz}}</h1>
+
+<h1 style="font-family: Times New Roman"> Result Scorecard</h1><br><hr>
+<form id="result-table" class="mt-7 mb-7 ml-7" >
+    
+    <div id="result-box" class="container ml-7 mt-7" >
+      <table class="table table-bordered mt-7 ml-7">
+        <tbody id="body-table">
+          
+        </tbody>
+      </table>  
+    </div>
+    <a href="/" role="button" type="submit" id="return-main" class="btn btn-info mt-3 ml-3">Return</a>
+</form>
+{% endblock content %}
+

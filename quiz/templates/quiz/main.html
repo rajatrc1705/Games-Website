@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block scripts %}
+
+  <script src="{% static 'quiz/main.js' %}" defer>
+    
+  </script>
+
+{% endblock scripts %}
+
+{% block title%}
+Frage
+{% endblock title %}
+
+{% block content %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+    <a class="navbar-brand" href="">
+      <img src="static/frage_logo.png" class="d-inline-block align-top rounded" width="30" height="30" alt="" href="/"> Frage
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <i class="bi bi-file-bar-graph"></i>
+          <a class="nav-link" href="/leaderboard">LeaderBoard <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+    <a class="navbar-brand" href="/logout">Logout</a>
+  </nav>
+  <h1 class="container mt-3 mb-3">Quiz List</h1><hr>
+  <div id="user-id"></div>
+<!-- Button trigger modal -->
+  
+  <!-- Modal -->
+  <div class="modal fade" id="quizStartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are You Ready?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Not Yet</button>
+          <button type="button" id='start-button' class="btn btn-success">Ready</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="d-flex flex-column">
+    {% for obj in object_list %}
+      <button class="btn btn-primary modal-button p-2"
+              data-pk="{{obj.pk}}"
+              data-quiz="{{obj.quiz_name}}"
+              data-questions="{{obj.num_of_questions}}"
+              data-time="{{obj.time_limit}}"
+              data-maxmarks="{{obj.maximum_marks}}"
+              data-toggle="modal"
+              data-target="#quizStartModal">
+                     {{obj.quiz_name}} 
+      </button><hr>
+    {% endfor %}
+  </div>
+{% endblock content %}

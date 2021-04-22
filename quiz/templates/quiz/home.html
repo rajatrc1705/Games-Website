@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block scripts %}
+
+  <script src="{% static 'quiz/home.js' %}" defer></script>
+
+{% endblock scripts %}
+
+{% block title %}
+Game Site
+{% endblock title %}
+
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+    <a class="navbar-brand" href="">
+      <img src="../static/frage_logo.png" class="d-inline-block align-top rounded" width="30" height="30" alt="" href="/"> Game Site
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <i class="bi bi-file-bar-graph"></i>
+          </li>
+      </ul>
+    </div>
+    <a class="navbar-brand" href="/logout">Logout</a>
+  </nav>
+ <hr>
+<h1 style="font-family: Times New Roman"> Welcome To Our Game Site</h1><br><hr>
+<p>Have a free lecture? Join us here at Game-Site, we provide exciting games for you to have fun during your free time.</p>
+<div id="user-id"></div>
+
+
+
+
+  <div class="modal fade" id="gameStartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" 
+  style="width:100%">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are You Ready?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body" id="modal-body">
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Not Yet</button>
+          <button type="button" id='start-button' class="btn btn-success">Ready</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+ 
+  {% for obj in object_list %}
+  <div class="col-sm-3 d-flex pb-3">
+  <div class="card card-block" style="width: 18rem;">
+    <img class="card-img-top" src="../static/{{obj.game_name}}.png" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{obj.game_name}}</h5>
+      <p class="card-text">Click on the button below to go play {{obj.game_name}}
+      </p>
+      <button class="btn btn-primary modal-button p-2"
+      data-game="{{obj.game_name}}"
+      data-url="{{obj.url}}"
+      data-toggle="modal"
+      data-target="#gameStartModal">
+             {{obj.game_name}} 
+    </button>
+    </div>
+  </div>  
+</div>    
+   {% endfor %}
+</div>
+
+{% endblock content %}
+
