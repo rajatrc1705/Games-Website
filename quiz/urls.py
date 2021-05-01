@@ -15,8 +15,8 @@ urlpatterns = [
     path('quiz/<int:pk>/res/', views.result_view, name='result-view'),
     path('quiz/<int:pk>/res/result/', views.show_quiz_result, name='quiz-result'),
     path('quiz/user/', views.user_id, name='user-id'),
-    path('leaderboard/user/', views.user_id, name='user-id'),
+    path('quiz/leaderboard/user/', views.user_id, name='user-id'),
     path('user/', views.user_id, name='user-id'),
-    path('leaderboard/', views.leaderboard, name='leaderboard'),
+    path('quiz/leaderboard/', views.leaderboard, name='leaderboard'),
     path('quiz/leaderboard/leaderdata/', views.leaderdata, name='leaderboard'),
 ]
