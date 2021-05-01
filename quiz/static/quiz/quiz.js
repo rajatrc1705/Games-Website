@@ -11,19 +11,25 @@ $.ajax({
         /* response will contain the JsonResponse which contains the data about the questions and their possible answers*/
         const data = response.data
         const image = response.image
-        console.log(image)
-        
+        var count = 0
+        // var images = []
+        // image.forEach(element=>{
+        //     for (const images_question of Object.entries(element)){
+        //         images.push(images_question);
+        //     }
+        // })
         data.forEach(element=>{
             for (const [question, answers] of Object.entries(element)){
-                console.log(question)
                 quizBox.innerHTML += `
-                    <img src="${image}" alt="Harry Potter">
                     <hr>
+                    <figure class="figure">
+                        <img src="${image[count]}" class="figure-img img-fluid rounded" width="350" height="270" alt="Harry Potter">
+                    </figure>
                     <div class="mb-2">
                         ${question}<br>
                     </div>
                 `
-
+                count = count + 1;
                 answers.forEach(answer=>{
                     quizBox.innerHTML += `
                         <div>

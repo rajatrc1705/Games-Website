@@ -41,10 +41,11 @@ def quiz_view(request, pk):
 def quiz_data_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     questions = list()
+    images = list()
     for q in quiz.get_questions():
         print(q)
         string_q = str(q)
-        string_q = string_q.split('|')[1]
+        images.append(string_q.split('|')[1])
         print("string_q: ", string_q)
         answers = list()
         for a in q.get_answers():
@@ -54,7 +55,7 @@ def quiz_data_view(request, pk):
         
     return JsonResponse({
         'data': questions,
-        'image': string_q
+        'image': images
     })
 
 @login_required(login_url='/login')
