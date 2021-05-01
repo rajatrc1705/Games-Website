@@ -1,6 +1,7 @@
 
 
 const url = window.location.href
+console.log(url);
 const resultBox = document.getElementById('result-box')
 const bodyTable = document.getElementById('body-table')
 $.ajax({
@@ -57,5 +58,5 @@ $.ajax({
 
 // const button = document.getElementById('return-main');
 // button.addEventListener('submit', e=>{
-//     window.location.href = 'http://127.0.0.1:8000/'
+//     window.location.href = url
 // })

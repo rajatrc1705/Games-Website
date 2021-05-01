@@ -39,12 +39,6 @@ modalButtons.forEach(button=> button.addEventListener('click', ()=>{
 
     startButton.addEventListener('click', ()=>{
         console.log(url_game)
-        // if (name == 'Frage'){
-        //     window.location.href = 'http://127.0.0.1:8000/'
-        // }
-        // else{
-        //     window.location.href = url_game
-        // }      
         window.location.href = url_game
     })
 }));
