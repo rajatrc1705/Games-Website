@@ -7,9 +7,10 @@ class Question(models.Model):
 
     text = models.CharField(max_length=300)
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    image = models.URLField(default='https://www.denofgeek.com/wp-content/uploads/2015/02/potter.jpeg?fit=300%2C225')
 
     def __str__(self):
-        return str(self.text)
+        return f"{str(self.text)}|{self.image}"
 
     def get_answers(self):
         return self.answer_set.all()

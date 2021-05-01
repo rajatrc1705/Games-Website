@@ -10,10 +10,14 @@ $.ajax({
         
         /* response will contain the JsonResponse which contains the data about the questions and their possible answers*/
         const data = response.data
+        const image = response.image
+        console.log(image)
+        
         data.forEach(element=>{
             for (const [question, answers] of Object.entries(element)){
                 console.log(question)
                 quizBox.innerHTML += `
+                    <img src="${image}" alt="Harry Potter">
                     <hr>
                     <div class="mb-2">
                         ${question}<br>
@@ -30,6 +34,7 @@ $.ajax({
                 })
             }
         })
+
     },
     error: function(error){
         console.log(error)

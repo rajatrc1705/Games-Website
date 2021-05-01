@@ -42,13 +42,19 @@ def quiz_data_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     questions = list()
     for q in quiz.get_questions():
+        print(q)
+        string_q = str(q)
+        string_q = string_q.split('|')[1]
+        print("string_q: ", string_q)
         answers = list()
         for a in q.get_answers():
             answers.append(a.text)
+        q = str(q).split('|')[0]
         questions.append({str(q): answers})
         
     return JsonResponse({
-        'data': questions
+        'data': questions,
+        'image': string_q
     })
 
 @login_required(login_url='/login')
