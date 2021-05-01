@@ -8,6 +8,7 @@ env = environ.Env(
     DEBUG=(bool, False)
 )
 
+
 # False if not in os.environ
 DEBUG = env('DEBUG')
 
