@@ -5,7 +5,7 @@ from mysite.settings.base import *
 
 env = environ.Env(
     # set casting, default value
-    DEBUG=(bool, False)
+    DEBUG=(bool, True)
 )
 
 
