@@ -30,7 +30,7 @@ class Quiz(models.Model):
 class Home(models.Model):
 
     game_name = models.CharField(max_length=100)
-    url = models.URLField(max_length=200, default='https://adoring-hawking-6d5afd.netlify.app/')
+    url = models.URLField(max_length=210, default='https://adoring-hawking-6d5afd.netlify.app/')
     def __str__(self):
         return self.game_name
 
