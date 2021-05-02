@@ -43,14 +43,15 @@ def quiz_data_view(request, pk):
     questions = list()
     images = list()
     for q in quiz.get_questions():
-        print(q)
-        string_q = str(q)
-        images.append(string_q.split('|')[1])
-        print("string_q: ", string_q)
+        images.append(q.get_image_link())
+
+        # string_q = str(q)
+        # images.append(string_q.split('|')[1])
+        # print("string_q: ", string_q)
         answers = list()
         for a in q.get_answers():
             answers.append(a.text)
-        q = str(q).split('|')[0]
+        # q = str(q).split('|')[0]
         questions.append({str(q): answers})
         
     return JsonResponse({
@@ -66,7 +67,7 @@ def save_quiz_view(request, pk):
         all_questions = list()
         data = dict(data)
         data.pop('csrfmiddlewaretoken')
-        
+        print(data)
         for k in data.keys():
             print(f"Key: {k} - Value: {data[k]}")
             try:    
@@ -130,6 +131,7 @@ def show_quiz_result(request, pk):
     data['Score'] = score
     data['Maximum Marks'] = quiz.maximum_marks
     data['Date'] = str(str(results[len(results)-1].date).split('T')[0]).split(' ')[0]
+
     return JsonResponse({
         'data': data
     })

@@ -1,4 +1,3 @@
-
 console.log('You are in quiz')
 const url = window.location.href
 const quizBox = document.getElementById('quiz-box');
@@ -11,25 +10,20 @@ $.ajax({
         /* response will contain the JsonResponse which contains the data about the questions and their possible answers*/
         const data = response.data
         const image = response.image
-        var count = 0
-        // var images = []
-        // image.forEach(element=>{
-        //     for (const images_question of Object.entries(element)){
-        //         images.push(images_question);
-        //     }
-        // })
+        var count = 0;
         data.forEach(element=>{
             for (const [question, answers] of Object.entries(element)){
                 quizBox.innerHTML += `
-                    <hr>
                     <figure class="figure">
                         <img src="${image[count]}" class="figure-img img-fluid rounded" width="350" height="270" alt="Harry Potter">
                     </figure>
+                    <hr>
                     <div class="mb-2">
                         ${question}<br>
                     </div>
-                `
+                `   
                 count = count + 1;
+
                 answers.forEach(answer=>{
                     quizBox.innerHTML += `
                         <div>
@@ -40,7 +34,6 @@ $.ajax({
                 })
             }
         })
-
     },
     error: function(error){
         console.log(error)
