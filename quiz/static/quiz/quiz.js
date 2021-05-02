@@ -17,21 +17,30 @@ $.ajax({
                     <figure class="figure">
                         <img src="${image[count]}" class="figure-img img-fluid rounded" width="350" height="270" alt="Harry Potter">
                     </figure>
-                    <hr>
-                    <div class="mb-2">
+                    <div class="card" >
+                    <div class="card-header">
                         ${question}<br>
                     </div>
+                    
+                    <ul class="list-group list-group-flush">
+                        
                 `   
                 count = count + 1;
 
                 answers.forEach(answer=>{
                     quizBox.innerHTML += `
-                        <div>
-                            <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
-                            <label for="${question}">${answer}</label>
-                        </div>
+                        <li class="list-group-item">
+                        <input type="radio" class="ans" id="${question}-${answer}" name="${question}" value="${answer}">
+                        <label for="${question}">${answer}</label>
+                        </li>
+                        
                     `
                 })
+                quizBox.innerHTML += `
+                    </ul>
+                    </div>
+                    <br><hr>
+                `
             }
         })
     },
