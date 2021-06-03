@@ -6,7 +6,7 @@ by me and my team-mates, to allow people to have a fun free-time. The games incl
 
 ## Build Status 
 
-<img src="https://user-images.githubusercontent.com/52173002/120616939-4607ca00-c477-11eb-9263-b4f2d58466df.png" alt="build passing" width="200"/>
+<img src="https://user-images.githubusercontent.com/52173002/120616939-4607ca00-c477-11eb-9263-b4f2d58466df.png" alt="build passing" width="135"/>
 
 ## Technologies Used 👩‍💻
 
