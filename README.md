@@ -29,6 +29,12 @@ The respositories for the <b>Rock-Paper-Scissors</b>, <b>Connect 4</b> and <b>Ha
  - Showing a cumulative leaderboard for the quizes
  - Different levels of difficulty for the Connect 4 game.
 
+My contribution to this project is:<br>
+ - Making Quiz component of the website, with leaderboard 📈 as a new and different feature
+ - Making the login and sign-up, and other pages and design features required by the main website
+ - Deploying the entire project to Heroku cloud service (PaaS).
+
+
 ## Deployment ☁
 
 This project is deployed on Heroku
