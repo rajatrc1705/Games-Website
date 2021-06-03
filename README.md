@@ -2,7 +2,10 @@
 <hr>
 
 This project is the result of an academic team project. The project itself is a website, which has some exciting and iconic games coded up from scratch 
-by me and my team-mates, to allow people to have a fun free-time. The games included in this site are Rock-Paper-Scissors (playing against a computer through a webcam), Connect 4, Hand Cricket (playing against a computer through a webcam), and a Quiz Application with quizes on exciting topics. This project is somewhat in its beta stages and more features are yet to be added.
+by me and my team-mates, to allow people to have a fun free-time. <br>
+The games included in this site are Rock-Paper-Scissors (playing against a computer through a webcam), Connect 4, Hand Cricket (playing against a computer through a webcam), and a Quiz Application with quizes on exciting topics. This project is somewhat in its beta stages and more features are yet to be added.
+<hr>
+<img src="https://github.com/rajatrc1705/Games-Website/blob/main/images/main_website.png" alt="website" width="450" height="250"/>
 
 ## Build Status 
 
