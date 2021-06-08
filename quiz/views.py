@@ -25,33 +25,28 @@ class QuizListView(LoginRequiredMixin, ListView):
 
 # we will get pk value from the url
 
-# @login_required(login_url='/login')
-# def game_urls():
-    
-
-
 @login_required(login_url='/login')
 def quiz_view(request, pk):
     quiz = Quiz.objects.get(pk=pk)
     return render(request, 'quiz/quiz.html', {'obj': quiz})
 
 # quiz.html should be fed with proper questions and answers
-
 @login_required(login_url='/login')
 def quiz_data_view(request, pk):
+    
     quiz = Quiz.objects.get(pk=pk)
     questions = list()
     images = list()
     for q in quiz.get_questions():
-        images.append(q.get_image_link())
 
-        # string_q = str(q)
-        # images.append(string_q.split('|')[1])
-        # print("string_q: ", string_q)
+        # get image for the quiz
+        images.append(q.get_image_link())
+        # getting all the answers for the corresponding questions in the quiz
         answers = list()
         for a in q.get_answers():
             answers.append(a.text)
-        # q = str(q).split('|')[0]
+            
+        # questions and their answers are stored in a dictionary, with question as key, and list of answers as the value
         questions.append({str(q): answers})
         
     return JsonResponse({

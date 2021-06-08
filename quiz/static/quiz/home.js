@@ -6,6 +6,8 @@ const userId = document.getElementById('user-id');
 
 var url = window.location.href;
 console.log(url)
+
+// GET request to retrieve username data and display on the page
 $.ajax({
     type: 'GET',
     url: `${url}user/`,
@@ -24,10 +26,11 @@ $.ajax({
     }
 })
 
+// a modal pops up when we click on a quiz
 modalButtons.forEach(button=> button.addEventListener('click', ()=>{
     const name = button.getAttribute('data-game')
     const url_game = button.getAttribute('data-url')
-    console.log("AYA")
+    
     modalBody.innerHTML = `
         <div class="mb-3">Are you ready to begin the quiz?
         <ul>

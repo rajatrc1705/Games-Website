@@ -13,9 +13,11 @@ class Question(models.Model):
         # return f"{str(self.text)}|{self.image}"
         return str(self.text)
 
+    # function to return the image link to javascript file, it will help display the image during the quiz 
     def get_image_link(self):
         return self.image
-        
+    
+    # this will help retrieve all the answers for that particular question
     def get_answers(self):
         return self.answer_set.all()
 
@@ -24,6 +26,7 @@ class Answer(models.Model):
 
     text = models.CharField(max_length=200)
     correct = models.BooleanField(default=False)
+    # connects the answer model to the question model, one to many relation for question to answer relation
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
 
     def __str__(self):

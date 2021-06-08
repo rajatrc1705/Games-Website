@@ -5,6 +5,8 @@ var tableBody = document.getElementById('table-body');
 const url = window.location.href
 console.log(url)
 var username = '';
+
+// get request to get username
 $.ajax({
     type: 'GET',
     url: `${url}user/`,
@@ -16,7 +18,8 @@ $.ajax({
         console.log(error)
     }
 })
-console.log(username)
+
+// get request to get all the people who are on the leaderboard, and highlight the row of the current user
 $.ajax({
     type: 'GET',
     url: `${url}leaderdata`,
