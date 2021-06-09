@@ -54,6 +54,7 @@ def quiz_data_view(request, pk):
         'image': images
     })
 
+# function to send score and username for the scoreboard
 @login_required(login_url='/login')
 def save_quiz_view(request, pk):
     
