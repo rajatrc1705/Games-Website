@@ -7,7 +7,7 @@ $.ajax({
     url: `${url}data/`,
     success: function(response){
         
-        /* response will contain the JsonResponse which contains the data about the questions and their possible answers*/
+        // response contains the data and image objects that we passed from the function in views.py file
         const data = response.data
         const image = response.image
         var count = 0;
@@ -53,6 +53,7 @@ $.ajax({
 const quizForm = document.getElementById('quiz-form');
 const csrf_token = document.getElementsByName('csrfmiddlewaretoken')
 
+// sending data through POST request all the answers selected by the user
 const sendData = ()=>{
     const elements = [...document.getElementsByClassName('ans')]
     const data = {}
@@ -69,12 +70,12 @@ const sendData = ()=>{
             }
         }
     })
+    
     $.ajax({
         type: 'POST',
         url: `${url}save/`,
         data: data,
         success: function(response){
-            /* This text works */
             console.log(response)
         },
         error: function(error){

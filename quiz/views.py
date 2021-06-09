@@ -62,7 +62,8 @@ def save_quiz_view(request, pk):
         all_questions = list()
         data = dict(data)
         data.pop('csrfmiddlewaretoken')
-        print(data)
+        
+        # Storing all the questions in a list
         for k in data.keys():
             print(f"Key: {k} - Value: {data[k]}")
             try:    
@@ -75,20 +76,27 @@ def save_quiz_view(request, pk):
         user = request.user
         quiz = Quiz.objects.get(pk=pk)
 
+        # getting all the requests for the leaderboard
         score=0
         multiplier = quiz.maximum_marks / quiz.num_of_questions
         results = []
         correct_answer = None
 
+
         for q in all_questions:
             answer_selected = request.POST.get(str(q))
+            
+            # making queries to the database to retrieve the correct answer
             correct_answer = Answer.objects.filter(question=q).filter(correct=True)
+
+            # if answer of user is correct, increase the score for the user
             if str(answer_selected) == str(correct_answer[0]):
                 score += multiplier
             else:
                 print(f"{answer_selected} - {correct_answer[0]}")
         print(f"Your Score : {score}/{quiz.maximum_marks}")
 
+        # get the maximum score for the user, if the user had attempted the quiz previously
         try:
             user = Result.objects.filter(user=user).user
             user_score = Result.objects.filter(user=user).score
@@ -96,11 +104,15 @@ def save_quiz_view(request, pk):
                 Result.objects.filter(user=user).delete() 
                 Result.objects.create(quiz=quiz, user=user, score=score)
         except:    
+
+            # create new score record for the user
             Result.objects.create(quiz=quiz, user=user, score=score)
-                
+        
+        # returns user and score
         return JsonResponse({
             'user': str(user), 'score': score
         })
+
 
 @login_required(login_url='/login')
 def result_view(request, pk):
@@ -108,10 +120,13 @@ def result_view(request, pk):
     result = Result.objects.filter(user=user)
     return render(request, 'quiz/result.html', {'obj': result})
 
+# function to show result after user submits the quiz
 @login_required(login_url='/login')
 def show_quiz_result(request, pk):
+    
     quiz=Quiz.objects.get(pk=pk)
     user = request.user
+    
     results=Result.objects.filter(user=user)
     maximum = -1
     score = results[len(results)-1].score
@@ -131,6 +146,7 @@ def show_quiz_result(request, pk):
         'data': data
     })
 
+# function to return the user name of the currently logged in user
 @login_required(login_url='/login')
 def user_id(request):
     user = request.user
@@ -140,26 +156,27 @@ def user_id(request):
         'data': data
     })
 
+# returning the user name to the leaderboard
 @login_required(login_url = '/login')
 def leaderboard(request):
 
     user = request.user
-    # for user in all_users:
-    #     print()
     return render(request, 'quiz/leaderboard.html', {'user': user})
-    # return JsonResponse({'data': data})
+ 
 
 def leaderdata(request):
+    
+    # getting all the users
     all_users = Result.objects.filter(user__username__startswith="").distinct()
     users = set()
     quizes = set()
     all_quizes = Quiz.objects.all()
+    
     for q in all_quizes:
         quizes.add(q.quiz_name)
     for i in all_users:
         users.add(i.user)
-        
-    print(users)
+    
     data = dict()
     for i in all_users:
         data[str(i.user)] = [str(i.user), -1] 
@@ -174,9 +191,7 @@ def leaderdata(request):
                 total_score += quiz_wise.score
             except:
                 print("Not Attempted")
-            
-            # print(f"QUIZ NAME: {Result.objects.filter(quiz__quiz_name__startswith=q).earliest('date')}")
-            
+                    
             data[str(user_result.user)] = total_score
     data = sorted(data.items(), key=lambda x: x[1], reverse=True)
 

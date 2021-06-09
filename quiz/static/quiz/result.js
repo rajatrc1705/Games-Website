@@ -1,21 +1,20 @@
-
-
 const url = window.location.href
 console.log(url);
 const resultBox = document.getElementById('result-box')
 const bodyTable = document.getElementById('body-table')
+
+// this displays the result after the user submits the quiz, the data is retrieved through a GET request
+// show_quiz_result function in views.py
 $.ajax({
     type: 'GET',
     url: `${url}result/`,
     success: function(response){
         var data = response.data
-        console.log(url)
-        console.log(data)
-        // data = JSON.parse(data)
-        // data = JSON.parse(JSON.stringify(data))
         
         for (var key in data){
             console.log(data[key])
+
+            // highlighting the score of the user in the Scorecard
             if (key == 'Score'){
                 class_name="table-success"
             }
@@ -40,23 +39,8 @@ $.ajax({
             </div>
             `
         }
-        // data.forEach(element=>{
-        //     for (const [key, value] in Object.entries(element)){
-        //         resultBox.innerHTML += `
-        //             <div class="p-2"> 
-        //                 ${key}: ${value}
-        //             </div>
-        //             <br>
-        //         `
-        //     }
-        // })
     },
     error: function(error){
         console.log(error)
     }
 })
-
-// const button = document.getElementById('return-main');
-// button.addEventListener('submit', e=>{
-//     window.location.href = url
-// })

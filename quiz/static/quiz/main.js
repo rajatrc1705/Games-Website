@@ -16,12 +16,13 @@ $.ajax({
         userId.innerHTML += `
             <p>Username : ${data}</p>
         `
-                
     },
     error: function(error){
         console.log(error)
     }
 })
+
+// displays the information for the particular quiz
 modalButtons.forEach(button=> button.addEventListener('click', ()=>{
     const pk = button.getAttribute('data-pk')
     const name = button.getAttribute('data-quiz')

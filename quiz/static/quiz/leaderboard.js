@@ -20,6 +20,7 @@ $.ajax({
 })
 
 // get request to get all the people who are on the leaderboard, and highlight the row of the current user
+//
 $.ajax({
     type: 'GET',
     url: `${url}leaderdata`,
