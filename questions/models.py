@@ -10,7 +10,6 @@ class Question(models.Model):
     image = models.URLField(default='https://www.denofgeek.com/wp-content/uploads/2015/02/potter.jpeg?fit=300%2C225')
 
     def __str__(self):
-        # return f"{str(self.text)}|{self.image}"
         return str(self.text)
 
     # function to return the image link to javascript file, it will help display the image during the quiz 
@@ -25,6 +24,7 @@ class Question(models.Model):
 class Answer(models.Model):
 
     text = models.CharField(max_length=200)
+    # Allows us the option of specifying the correct answer while adding a question through Django interface
     correct = models.BooleanField(default=False)
     # connects the answer model to the question model, one to many relation for question to answer relation
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
