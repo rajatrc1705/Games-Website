@@ -45,7 +45,7 @@ This project is deployed on Heroku
 ## Credits 🦋
 
 - [Sounak Das](https://github.com/sounak1407)
-- [Atharva Dave]()
+- [Atharva Dave](http://github.com/asd1510)
 - [Apoorv Gupta](https://github.com/apoorvgupta11)
 - [Rajat Chaudhari](https://github.com/rajatrc1705)
 
